@@ -26,7 +26,8 @@ public class NewsController {
 
 	/**
 	 * 新闻管理
-	 *
+	 * @author:郑云飞
+	 * @createDate:2017-03-28
 	 * @param model
 	 * @return
 	 */
@@ -40,7 +41,8 @@ public class NewsController {
 
 	/**
 	 * 新闻增加表单
-	 *
+	 * @author:郑云飞
+	 * @createDate:2017-03-28
 	 * @param model
 	 * @return
 	 */
@@ -53,7 +55,8 @@ public class NewsController {
 
 	/**
 	 * 新闻修改表单
-	 *
+	 * @author:郑云飞
+	 * @createDate:2017-03-28
 	 * @param model
 	 * @return
 	 */
@@ -66,7 +69,8 @@ public class NewsController {
 
 	/**
 	 * 新闻修改提交操作
-	 *
+	 * @author:郑云飞
+	 * @createDate:2017-03-28
 	 * @param news
 	 * @return
 	 */
@@ -82,7 +86,8 @@ public class NewsController {
 
 	/**
 	 * 新闻删除操作
-	 *
+	 * @author:郑云飞
+	 * @createDate:2017-03-28
 	 * @param model
 	 * @param id
 	 * @return

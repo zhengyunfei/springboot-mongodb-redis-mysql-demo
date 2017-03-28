@@ -8,7 +8,6 @@ import com.sectong.domain.NewsCreateForm;
 
 /**
  * 新闻接口
- *
  * @author 郑云飞
  *
  */

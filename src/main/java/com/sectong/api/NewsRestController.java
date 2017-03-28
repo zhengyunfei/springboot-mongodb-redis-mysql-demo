@@ -1,4 +1,4 @@
-package com.sectong.controller;
+package com.sectong.api;
 
 import com.sectong.domain.News;
 import com.sectong.domain.NewsCreateForm;

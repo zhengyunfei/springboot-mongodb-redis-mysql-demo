@@ -1,4 +1,4 @@
-package com.sectong.controller;
+package com.sectong.api;
 
 import com.sectong.domain.User;
 import com.sectong.domain.UserCreateForm;

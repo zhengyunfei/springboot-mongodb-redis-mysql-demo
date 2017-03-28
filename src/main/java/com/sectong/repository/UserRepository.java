@@ -10,7 +10,6 @@ import java.util.Collection;
 
 /**
  * 用户User CrudRepository定义
- *
  * @author 郑云飞
  *
  */

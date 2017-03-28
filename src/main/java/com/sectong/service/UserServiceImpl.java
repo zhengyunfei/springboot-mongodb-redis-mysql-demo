@@ -212,7 +212,7 @@ public class UserServiceImpl implements UserService {
 			}
 			data.put("role", arrayList.toString());
 			String domain= ServerResourcesUtil.getCurrentDomainUrl(request);
-			data.put("commands","<a href='"+domain+"/user/edit?id="+user.getId()+"'><font color='green'>编辑</font></a>");
+			data.put("commands","<a href='"+domain+"/user/edit?id="+user.getId()+"'><font color='green'>编辑</font></a> <a href='"+domain+"/user/del?id="+user.getId()+"'><font color='red'>删除</font></a> ");
 			pList.add(data);
 			i++;
 		}

@@ -4,8 +4,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * 创建新闻POJO
- *
- * @author 郑云飞
+ * @author:郑云飞
+ * @createDate:2017-03-28
  *
  */
 public class NewsCreateForm {

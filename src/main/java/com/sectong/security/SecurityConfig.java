@@ -13,7 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * 安全配置文件，主要是重写默认的认证方式和访问目录权限
- *
  * @author 郑云飞
  *
  */
@@ -35,7 +34,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	/**
 	 * 客户端使用API登录
-	 *
 	 * @author 郑云飞
 	 *
 	 */

@@ -24,21 +24,21 @@ public class UserController {
 	}
 	/**
 	 * 用户管理
-	 *
+	 * @author:郑云飞
+	 * @createDate:2017-03-28
 	 * @param model
 	 * @return
 	 */
 	@GetMapping("/list")
 	public String adminUser(Model model,HttpServletRequest request) {
 		model.addAttribute("user", true);
-		//Iterable<User> userlist = userRepository.findAll();
-		//model.addAttribute("userlist", userlist);
 		return "admin/user";
 	}
 
 	/**
 	 * 用户新增表单
-	 *
+	 * @author:郑云飞
+	 * @createDate:2017-03-28
 	 * @param model
 	 * @return
 	 */
@@ -51,6 +51,8 @@ public class UserController {
 
 	/**
 	 * 用户新增提交操作
+	 * @author:郑云飞
+	 * @createDate:2017-03-28
 	 * @param user
 	 * @return
 	 */
@@ -63,7 +65,8 @@ public class UserController {
 
 	/**
 	 * 用户修改表单
-	 *
+	 * @author:郑云飞
+	 * @createDate:2017-03-28
 	 * @param model
 	 * @return
 	 */
@@ -76,6 +79,8 @@ public class UserController {
 
 	/**
 	 * 用户修改提交操作
+	 * @author:郑云飞
+	 * @createDate:2017-03-28
 	 * @return
 	 */
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
@@ -83,5 +88,21 @@ public class UserController {
 	public String userSubmit(@ModelAttribute User user) {
 		userRepository.save(user);
 		return "redirect:/user/list";
+	}
+
+	/**
+	 * 用户删除操作
+	 * @author:郑云飞
+	 * @createDate:2017-03-28
+	 * @param model
+	 * @param id
+	 * @return
+	 */
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@GetMapping("/del")
+	public String delUser(Model model, @RequestParam Long id) {
+		userRepository.delete(id);
+		return "redirect:/user/list";
+
 	}
 }

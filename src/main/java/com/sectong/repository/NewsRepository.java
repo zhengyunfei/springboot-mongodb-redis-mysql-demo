@@ -9,7 +9,6 @@ import com.sectong.domain.News;
 
 /**
  * 新闻表Repository定义
- *
  * @author 郑云飞
  *
  */

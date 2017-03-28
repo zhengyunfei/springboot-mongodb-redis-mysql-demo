@@ -9,8 +9,8 @@ import javax.persistence.UniqueConstraint;
 
 /**
  * 用户User POJO定义
- *
- * @author 郑云飞
+ * @author:郑云飞
+ * @createDate:2017-03-28
  *
  */
 @Entity

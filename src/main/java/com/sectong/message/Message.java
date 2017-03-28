@@ -2,7 +2,6 @@ package com.sectong.message;
 
 /**
  * 错误信息处理
- *
  * @author 郑云飞
  *
  */
