@@ -4,8 +4,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * 创建用户字段POJO定义
- * 
- * @author jiekechoo
+ *
+ * @author 郑云飞
  *
  */
 public class UserCreateForm {

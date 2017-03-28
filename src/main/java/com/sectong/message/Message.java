@@ -2,8 +2,8 @@ package com.sectong.message;
 
 /**
  * 错误信息处理
- * 
- * @author jiekechoo
+ *
+ * @author 郑云飞
  *
  */
 public class Message {

@@ -12,8 +12,8 @@ import com.sectong.service.UserService;
 
 /**
  * 验证字段实现
- * 
- * @author jiekechoo
+ *
+ * @author 郑云飞
  *
  */
 @Component

@@ -9,8 +9,8 @@ import org.springframework.http.HttpStatus;
 
 /**
  * 错误页面配置
- * 
- * @author jiekechoo
+ *
+ * @author 郑云飞
  *
  */
 @Configuration

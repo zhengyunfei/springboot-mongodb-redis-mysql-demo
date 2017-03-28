@@ -10,7 +10,7 @@ import javax.persistence.UniqueConstraint;
 /**
  * 用户User POJO定义
  *
- * @author jiekechoo
+ * @author 郑云飞
  *
  */
 @Entity

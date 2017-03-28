@@ -1,21 +1,20 @@
 package com.sectong.service;
 
-import java.util.Date;
-
+import com.sectong.domain.News;
+import com.sectong.domain.NewsCreateForm;
+import com.sectong.domain.User;
+import com.sectong.repository.NewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.sectong.domain.News;
-import com.sectong.domain.NewsCreateForm;
-import com.sectong.domain.User;
-import com.sectong.repository.NewsRepository;
+import java.util.Date;
 
 /**
  * 新闻接口实现
- * 
- * @author jiekechoo
+ *
+ * @author 郑云飞
  *
  */
 @Service
@@ -26,7 +25,7 @@ public class NewsServiceImpl implements NewsService {
 
 	/**
 	 * 注入NewsRepository
-	 * 
+	 *
 	 * @param newsRepository
 	 * @param userService
 	 */

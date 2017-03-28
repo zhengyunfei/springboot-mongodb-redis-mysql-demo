@@ -8,8 +8,8 @@ import com.sectong.domain.NewsCreateForm;
 
 /**
  * 新闻接口
- * 
- * @author jiekechoo
+ *
+ * @author 郑云飞
  *
  */
 public interface NewsService {

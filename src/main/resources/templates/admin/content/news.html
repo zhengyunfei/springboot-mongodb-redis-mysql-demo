@@ -40,7 +40,7 @@
 							<div class="toolbar no-padding">
 								<div class="btn-group">
 									<span class="btn btn-xs "><a
-										th:href="@{/admin/news/add}"><i class="icon-plus"></i></a>
+										th:href="@{/news/add}"><i class="icon-plus"></i></a>
 									</span>
 								</div>
 							</div>
@@ -66,9 +66,9 @@
 										<td th:text="${news.img}"></td>
 										<td th:text="${news.content}"></td>
 										<td th:text="${news.datetime}"></td>
-										<td><a th:href="@{/admin/news/edit(id=${news.id})}"
+										<td><a th:href="@{/news/edit(id=${news.id})}"
 											title="编辑"><i class="icon-edit"></i></a></td>
-										<td><a th:href="@{/admin/news/del(id=${news.id})}"
+										<td><a th:href="@{/news/del(id=${news.id})}"
 											title="删除"><i class="icon-trash visual red"
 												onclick="return confirm('确定要删除吗?')"></i></a></td>
 									</tr>

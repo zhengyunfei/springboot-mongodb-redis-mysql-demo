@@ -10,8 +10,8 @@ import javax.persistence.ManyToOne;
 
 /**
  * 新闻POJO
- * 
- * @author jiekechoo
+ *
+ * @author 郑云飞
  *
  */
 

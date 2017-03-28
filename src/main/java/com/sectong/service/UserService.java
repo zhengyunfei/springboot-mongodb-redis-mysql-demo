@@ -1,17 +1,16 @@
 package com.sectong.service;
 
-import javax.servlet.http.HttpServletRequest;
-
+import com.sectong.domain.User;
+import com.sectong.domain.UserCreateForm;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.sectong.domain.User;
-import com.sectong.domain.UserCreateForm;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 用户服务网接口定义
- * 
- * @author jiekechoo
+ *
+ * @author 郑云飞
  *
  */
 public interface UserService {

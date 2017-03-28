@@ -11,7 +11,7 @@ import java.util.Collection;
 /**
  * 用户User CrudRepository定义
  *
- * @author jiekechoo
+ * @author 郑云飞
  *
  */
 @RestResource(exported = false) // 禁止暴露REST

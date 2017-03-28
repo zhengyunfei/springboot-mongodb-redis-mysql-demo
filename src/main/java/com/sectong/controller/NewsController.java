@@ -1,61 +1,98 @@
 package com.sectong.controller;
-
-import javax.validation.Valid;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
 import com.sectong.domain.News;
-import com.sectong.domain.NewsCreateForm;
-import com.sectong.message.Message;
-import com.sectong.service.NewsService;
+import com.sectong.domain.User;
+import com.sectong.repository.NewsRepository;
+import com.sectong.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping(value = "/api/v1", name = "新闻API")
+import java.util.Date;
+
+@Controller
+@RequestMapping(value = "/news")
 public class NewsController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(NewsController.class);
-	private Message message = new Message();
-
-	private NewsService newsService;
+	private NewsRepository newsRepository;
+	private UserService userService;
 
 	@Autowired
-	public NewsController(NewsService newsService) {
-		this.newsService = newsService;
+	public NewsController(NewsRepository newsRepository, UserService userService) {
+		this.newsRepository = newsRepository;
+		this.userService = userService;
 	}
 
-	@ResponseBody
-	@RequestMapping(value = "i/news/create", method = RequestMethod.POST)
-	public ResponseEntity<Message> createNews(@Valid @RequestBody NewsCreateForm form, BindingResult bindingResult) {
-		try {
-			News news = newsService.create(form);
-			message.setMsg(1, "新闻创建成功", news);
-			return new ResponseEntity<Message>(message, HttpStatus.OK);
-		} catch (DataIntegrityViolationException e) {
-			LOGGER.warn("create news error", e);
-			message.setMsg(0, "创建新闻失败");
-			return new ResponseEntity<Message>(message, HttpStatus.OK);
-		}
+	/**
+	 * 新闻管理
+	 *
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/list")
+	public String adminNews(Model model) {
+		model.addAttribute("news", true);
+		Iterable<News> newslist = newsRepository.findAll();
+		model.addAttribute("newslist", newslist);
+		return "admin/news";
 	}
 
-	@RequestMapping(value = "news/getNewsList", method = RequestMethod.GET)
-	public ResponseEntity<Message> getNewsList(@RequestParam(defaultValue = "0") Long startid, Pageable p) {
-		Page<News> news = newsService.getNewsList(startid, p);
-		message.setMsg(1, "获取新闻列表成功", news);
-		return new ResponseEntity<Message>(message, HttpStatus.OK);
+	/**
+	 * 新闻增加表单
+	 *
+	 * @param model
+	 * @return
+	 */
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@GetMapping("/add")
+	public String newsAdd(Model model) {
+		model.addAttribute("newsAdd", new News());
+		return "admin/newsAdd";
+	}
+
+	/**
+	 * 新闻修改表单
+	 *
+	 * @param model
+	 * @return
+	 */
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@GetMapping("/edit")
+	public String newsEdit(Model model, @RequestParam Long id) {
+		model.addAttribute("newsEdit", newsRepository.findOne(id));
+		return "admin/newsEdit";
+	}
+
+	/**
+	 * 新闻修改提交操作
+	 *
+	 * @param news
+	 * @return
+	 */
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PostMapping("/edit")
+	public String newsSubmit(@ModelAttribute News news) {
+		news.setDatetime(new Date());
+		User user = userService.getCurrentUser();
+		news.setUser(user);
+		newsRepository.save(news);
+		return "redirect:/admin/news";
+	}
+
+	/**
+	 * 新闻删除操作
+	 *
+	 * @param model
+	 * @param id
+	 * @return
+	 */
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@GetMapping("/del")
+	public String delNews(Model model, @RequestParam Long id) {
+		newsRepository.delete(id);
+		return "redirect:/admin/news";
+
 	}
 
 }

@@ -15,8 +15,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Swagger 配置文件
- * 
- * @author jiekechoo
+ *
+ * @author 郑云飞
  *
  */
 
