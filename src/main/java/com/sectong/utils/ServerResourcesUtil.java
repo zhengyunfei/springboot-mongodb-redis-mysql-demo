@@ -3,7 +3,8 @@ package com.sectong.utils;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by Administrator on 2017/3/28.
+ * Created by 郑云飞 on 2017/3/28.
+ * 获取当前访问的url前缀
  */
 public class ServerResourcesUtil {
     public static String getCurrentDomainUrl(HttpServletRequest request){
