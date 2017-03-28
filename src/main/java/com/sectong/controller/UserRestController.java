@@ -154,9 +154,8 @@ public class UserRestController {
 	 * @return
 	 */
 	@RequestMapping(value = "getUserList", method = RequestMethod.POST)
-	public Object getUserList(@RequestParam(required = false) int current, @RequestParam(required = false) int rowCount,
-			@RequestParam(required = false) String searchPhrase) {
-		return userService.getUserList(current, rowCount, searchPhrase);
+	public Object getUserList(@RequestParam(required = false) int current, @RequestParam(required = false) int rowCount, @RequestParam(required = false) String searchPhrase,HttpServletRequest request) {
+		return userService.getUserList(current, rowCount, searchPhrase,request);
 
 	}
 

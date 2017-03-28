@@ -5,6 +5,7 @@ import com.sectong.domain.User;
 import com.sectong.domain.UserCreateForm;
 import com.sectong.repository.AuthorityRepository;
 import com.sectong.repository.UserRepository;
+import com.sectong.utils.ServerResourcesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -178,7 +179,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public Object getUserList(int current, int rowCount, String searchPhrase) {
+	public Object getUserList(int current, int rowCount, String searchPhrase,HttpServletRequest request) {
 		HashMap<String, Object> ret = new HashMap<String, Object>();
 		ArrayList<Object> pList = new ArrayList<Object>();
 		Long total = userRepository.count();
@@ -210,7 +211,8 @@ public class UserServiceImpl implements UserService {
 				}
 			}
 			data.put("role", arrayList.toString());
-			data.put("commands","<a href='javascript:update("+user.getId()+")'><font color='green'>编辑</font></a>");
+			String domain= ServerResourcesUtil.getCurrentDomainUrl(request);
+			data.put("commands","<a href='"+domain+"/user/edit?id="+user.getId()+"'><font color='green'>编辑</font></a>");
 			pList.add(data);
 			i++;
 		}

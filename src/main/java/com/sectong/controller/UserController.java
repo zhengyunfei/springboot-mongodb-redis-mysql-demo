@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {
@@ -27,10 +29,10 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping("/list")
-	public String adminUser(Model model) {
+	public String adminUser(Model model,HttpServletRequest request) {
 		model.addAttribute("user", true);
-		Iterable<User> userlist = userRepository.findAll();
-		model.addAttribute("userlist", userlist);
+		//Iterable<User> userlist = userRepository.findAll();
+		//model.addAttribute("userlist", userlist);
 		return "admin/user";
 	}
 
@@ -56,7 +58,7 @@ public class UserController {
 	@PostMapping("/add")
 	public String userAdd(@ModelAttribute User user) {
 		userRepository.save(user);
-		return "redirect:/admin/user";
+		return "redirect:/user/list";
 	}
 
 	/**
@@ -80,6 +82,6 @@ public class UserController {
 	@PostMapping("/edit")
 	public String userSubmit(@ModelAttribute User user) {
 		userRepository.save(user);
-		return "redirect:/admin/user";
+		return "redirect:/user/list";
 	}
 }

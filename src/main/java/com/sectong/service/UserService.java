@@ -27,6 +27,6 @@ public interface UserService {
 
 	Object listAllUsers(Pageable p);
 
-	Object getUserList(int current, int rowCount, String searchPhrase);
+	Object getUserList(int current, int rowCount, String searchPhrase,HttpServletRequest request);
 
 }

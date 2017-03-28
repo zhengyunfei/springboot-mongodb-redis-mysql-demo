@@ -26,6 +26,10 @@ public class User {
 	private String image;
 	private int enabled;
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	public Long getId() {
 		return id;
 	}
