@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>header</title>
+</head>
+
+<body>
+	<div id="content" th:fragment="content">
+		<div class="container">
+			<!-- Breadcrumbs line -->
+			<div class="crumbs">
+				<ul id="breadcrumbs" class="breadcrumb">
+					<li><i class="icon-home"></i> <a href="/">仪表盘</a></li>
+					<li class="current">角色管理</li>
+				</ul>
+
+			</div>
+			<!-- /Breadcrumbs line -->
+
+			<!--=== Page Header ===-->
+			<div class="page-header">
+				<div class="page-title">
+					<span th:inline="text">欢迎使用，[[${#httpServletRequest.remoteUser}]]!</span>
+				</div>
+
+			</div>
+			<!-- /Page Header -->
+
+			<!--=== Page Content ===-->
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="widget box">
+						<div class="widget-header">
+							<h4>
+								<i class="icon-reorder"></i> 角色列表
+							</h4>
+							<div class="toolbar no-padding">
+								<div class="btn-group">
+									<span class="btn btn-xs "><a
+										th:href="@{/role/add}"><i class="icon-plus"></i></a>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="content no-padding">
+							<table id="grid-data"
+								class="table table-condensed table-hover table-striped">
+								<thead>
+									<tr>
+										<th data-column-id="id" data-type="numeric"
+											data-identifier="true">ID</th>
+										<th data-column-id="rolename">名称</th>
+										<th data-column-id="roleno">编码</th>
+										<th data-column-id="datetime">时间</th>
+										<th data-column-id="datetime">操作</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="role : ${rolelist}">
+										<td th:text="${role.id}"></td>
+										<td th:text="${role.rolename}"></td>
+										<td th:text="${role.roleno}"></td>
+										<td th:text="${role.createtime}"></td>
+										<td><a th:href="@{/role/edit(id=${role.id})}"
+											title="编辑"><i class="icon-edit"></i></a></td>
+										<td><a th:href="@{/role/del(id=${role.id})}"
+											title="删除"><i class="icon-trash visual red"
+												onclick="return confirm('确定要删除吗?')"></i></a></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- /.row -->
+			<!-- /Page Content -->
+		</div>
+		<!-- /.container -->
+
+	</div>
+
+</body>
+</html>

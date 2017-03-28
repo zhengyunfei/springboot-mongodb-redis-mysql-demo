@@ -30,6 +30,11 @@
 				<li th:class="${user} ? 'current' : ''"><a href="/user/list"> <i
 						class="icon-user"></i> 用户管理
 				</a></li>
+				<li th:class="${role} ? 'current' : ''">
+					<a href="/role/list">
+						<i class="icon-home"></i> 角色管理
+				</a>
+				</li>
 				<li th:class="${news} ? 'current' : ''"><a href="/news/list"> <i
 						class="icon-list"></i> 新闻管理
 				</a></li>
