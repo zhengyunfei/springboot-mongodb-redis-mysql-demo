@@ -49,11 +49,17 @@ public class OperationLogController {
 	 */
 	@RequestMapping("/list")
 	public ModelAndView list (Model model) {
+		long startTime = System.currentTimeMillis();    //获取开始时间
 		model.addAttribute("log", true);
 		List<OperationLog> list= operationLogService.findAll();
 		ModelAndView mv=new ModelAndView();
 		mv.addObject("list",list);
 		mv.setViewName("/admin/mongodbLog/log");
+		long endTime = System.currentTimeMillis();    //获取结束时间
+		String runTime=(endTime - startTime) + "ms";
+		System.out.println("程序运行时间：" +runTime);    //输出程序运行时间
+		model.addAttribute("total",list.size());
+		model.addAttribute("runtime",runTime);
 		return mv;
 	}
 }
