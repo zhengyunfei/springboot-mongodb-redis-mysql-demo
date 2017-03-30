@@ -4,6 +4,7 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 <title>header</title>
+
 </head>
 
 <body>
@@ -13,7 +14,7 @@
 			<div class="crumbs">
 				<ul id="breadcrumbs" class="breadcrumb">
 					<li><i class="icon-home"></i> <a href="/">仪表盘</a></li>
-					<li class="current">新闻管理</li>
+					<li class="current">文章管理</li>
 				</ul>
 
 			</div>
@@ -35,7 +36,7 @@
 					<div class="widget box">
 						<div class="widget-header">
 							<h4>
-								<i class="icon-reorder"></i> 增加新闻
+								<i class="icon-reorder"></i> 增加文章
 							</h4>
 							<div class="toolbar no-padding">
 								<div class="btn-group">
@@ -53,10 +54,9 @@
 								<p>
 									图片: <input type="text" th:field="*{img}" />
 								</p>
-								<p>
+								<p >
 									内容:
-									<textarea rows="3" cols="20" th:field="*{content}"
-										style="margin-left: 0px;"></textarea>
+									<textarea th:field="*{contents}" style="height: 300px">请输入内容</textarea>
 								</p>
 								<p>
 									<input type="submit" value="提交" /> <input type="reset"
@@ -67,6 +67,10 @@
 					</div>
 				</div>
 			</div>
+			<link rel="stylesheet" type="text/css" href="/plugins/wangEditor-2.1.23/dist/css/wangEditor.min.css"/>
+			<script type="text/javascript" src="/plugins/wangEditor-2.1.23/dist/js/lib/jquery-1.10.2.min.js"></script>
+			<script type="text/javascript" src="/plugins/wangEditor-2.1.23/dist/js/wangEditor.js"></script>
+			<script type="text/javascript" src="/plugins/wangEditor-2.1.23/editorconfig.js"></script>
 
 			<!-- /.row -->
 			<!-- /Page Content -->

@@ -19,6 +19,7 @@ public class NewsCreateForm {
 	@NotEmpty
 	private String img;
 
+
 	public String getTitle() {
 		return title;
 	}

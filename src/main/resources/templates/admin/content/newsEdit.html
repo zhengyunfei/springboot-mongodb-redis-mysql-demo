@@ -13,7 +13,7 @@
 			<div class="crumbs">
 				<ul id="breadcrumbs" class="breadcrumb">
 					<li><i class="icon-home"></i> <a href="/">仪表盘</a></li>
-					<li class="current">新闻管理</li>
+					<li class="current">文章管理</li>
 				</ul>
 
 			</div>
@@ -35,7 +35,7 @@
 					<div class="widget box">
 						<div class="widget-header">
 							<h4>
-								<i class="icon-reorder"></i> 新闻编辑
+								<i class="icon-reorder"></i> 文章编辑
 							</h4>
 							<div class="toolbar no-padding">
 								<div class="btn-group">
@@ -46,7 +46,7 @@
 						</div>
 						<div class="content no-padding">
 							<form action="#" th:action="@{/news/edit}"
-								th:object="${newsEdit}" method="post">
+								th:object="${newsEdit}" method="post" id="form">
 								<input type="hidden" th:field="*{id}" />
 								<p>
 									标题: <input type="text" th:field="*{title}" />
@@ -55,19 +55,24 @@
 									图片: <input type="text" th:field="*{img}" />
 								</p>
 								<p>
-									内容:
-									<textarea rows="3" cols="20" th:field="*{content}"
-										style="margin-left: 0px;"></textarea>
+								内容:
+								<div  >
+									<textarea th:field="*{contents}" style="height: 300px">请输入内容</textarea>
+								</div>
 								</p>
 								<p>
-									<input type="submit" value="提交" /> <input type="reset"
-										value="重置" />
+									<input type="button" value="提交" id="submitBtn"/>
+									<input type="reset" value="重置" />
 								</p>
 							</form>
 						</div>
 					</div>
 				</div>
 			</div>
+			<link rel="stylesheet" type="text/css" href="/plugins/wangEditor-2.1.23/dist/css/wangEditor.min.css"/>
+			<script type="text/javascript" src="/plugins/wangEditor-2.1.23/dist/js/lib/jquery-1.10.2.min.js"></script>
+			<script type="text/javascript" src="/plugins/wangEditor-2.1.23/dist/js/wangEditor.js"></script>
+			<script type="text/javascript" src="/plugins/wangEditor-2.1.23/editorconfig.js"></script>
 
 			<!-- /.row -->
 			<!-- /Page Content -->

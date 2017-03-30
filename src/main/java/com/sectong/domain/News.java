@@ -20,10 +20,11 @@ public class News {
 
 	private String title;
 	private String img;
-	private String content;
+	private String contents;
 	private Date datetime;
 	@ManyToOne
 	private User user;
+
 
 	public Long getId() {
 		return id;
@@ -49,12 +50,12 @@ public class News {
 		this.img = img;
 	}
 
-	public String getContent() {
-		return content;
+	public String getContents() {
+		return contents;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setContents(String contents) {
+		this.contents = contents;
 	}
 
 	public Date getDatetime() {
@@ -73,10 +74,10 @@ public class News {
 		this.user = user;
 	}
 
-	public void createNews(String title, String img, String content, Date datetime, User user) {
+	public void createNews(String title, String img, String contents, Date datetime, User user) {
 		this.title = title;
 		this.img = img;
-		this.content = content;
+		this.contents = contents;
 		this.datetime = datetime;
 		this.user = user;
 	}

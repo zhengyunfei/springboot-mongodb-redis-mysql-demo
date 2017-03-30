@@ -3,12 +3,14 @@ import com.sectong.domain.News;
 import com.sectong.domain.User;
 import com.sectong.repository.NewsRepository;
 import com.sectong.service.UserService;
+import com.sectong.utils.ServerResourcesUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 @Controller
@@ -48,8 +50,10 @@ public class NewsController {
 	 */
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@GetMapping("/add")
-	public String newsAdd(Model model) {
+	public String newsAdd(Model model, HttpServletRequest request) {
 		model.addAttribute("newsAdd", new News());
+		String domain= ServerResourcesUtil.getCurrentDomainUrl(request);
+		model.addAttribute("domain",domain);
 		return "admin/newsAdd";
 	}
 
