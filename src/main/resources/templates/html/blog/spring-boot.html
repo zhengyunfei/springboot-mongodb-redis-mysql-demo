@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <!-- saved from url=(0036)http://www.ityouknow.com/spring-boot -->
-<html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -28,40 +30,9 @@
 </head>
 <body>
 <div id="qrcode"></div>
-<header class="site-header">
-    <div class="container">
-        <a id="site-header-brand" href="http://www.ityouknow.com/" title="纯洁的微笑">
-            <span class="octicon octicon-mark-github"></span> 纯洁的微笑
-        </a>
-        <nav class="site-header-nav" role="navigation">
-
-            <a href="http://www.ityouknow.com/" class=" site-header-nav-item hvr-underline-from-center" target="" title="Home">
-                Home
-            </a>
-
-            <a href="http://www.ityouknow.com/spring-boot" class=" site-header-nav-item hvr-underline-from-center" target="" title="Spring-Boot">
-                Spring-Boot
-            </a>
-
-            <a href="http://www.ityouknow.com/open-source" class=" site-header-nav-item hvr-underline-from-center" target="" title="Open-Source">
-                Open-Source
-            </a>
-
-            <a href="http://www.ityouknow.com/blog" class=" site-header-nav-item hvr-underline-from-center" target="" title="Blog">
-                Blog
-            </a>
-
-            <a href="http://www.ityouknow.com/link" class=" site-header-nav-item hvr-underline-from-center" target="" title="Link">
-                Link
-            </a>
-
-            <a href="http://www.ityouknow.com/about" class=" site-header-nav-item hvr-underline-from-center" target="" title="About">
-                About
-            </a>
-
-        </nav>
-    </div>
-</header>
+<!--header-->
+<div th:replace="html/blog/header">...</div>
+<!--header-->
 <div class="content">
     <section class="jumbotron geopattern" data-pattern-id="Spring Boot" style="background-image: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDUiIGhlaWdodD0iMTQ1Ij48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJyZ2IoMTE2LDE0NCw2MykiPjwvcmVjdD48Y2lyY2xlIGN4PSIwIiBjeT0iMCIgcj0iMjQuMTY2NjY2NjY2NjY2NjY0IiBmaWxsPSIjZGRkIiBvcGFjaXR5PSIwLjAzNzMzMzMzMzMzMzMzMzMzIj48L2NpcmNsZT48Y2lyY2xlIGN4PSIxNDUiIGN5PSIwIiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiNkZGQiIG9wYWNpdHk9IjAuMDM3MzMzMzMzMzMzMzMzMzMiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjAiIGN5PSIxNDUiIHI9IjI0LjE2NjY2NjY2NjY2NjY2NCIgZmlsbD0iI2RkZCIgb3BhY2l0eT0iMC4wMzczMzMzMzMzMzMzMzMzMyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMTQ1IiBjeT0iMTQ1IiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiNkZGQiIG9wYWNpdHk9IjAuMDM3MzMzMzMzMzMzMzMzMzMiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjI0LjE2NjY2NjY2NjY2NjY2NCIgY3k9IjAiIHI9IjI0LjE2NjY2NjY2NjY2NjY2NCIgZmlsbD0iIzIyMiIgb3BhY2l0eT0iMC4wMjg2NjY2NjY2NjY2NjY2NjciPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjI0LjE2NjY2NjY2NjY2NjY2NCIgY3k9IjE0NSIgcj0iMjQuMTY2NjY2NjY2NjY2NjY0IiBmaWxsPSIjMjIyIiBvcGFjaXR5PSIwLjAyODY2NjY2NjY2NjY2NjY2NyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iNDguMzMzMzMzMzMzMzMzMzMiIGN5PSIwIiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiMyMjIiIG9wYWNpdHk9IjAuMTE1MzMzMzMzMzMzMzMzMzQiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjQ4LjMzMzMzMzMzMzMzMzMzIiBjeT0iMTQ1IiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiMyMjIiIG9wYWNpdHk9IjAuMTE1MzMzMzMzMzMzMzMzMzQiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjcyLjUiIGN5PSIwIiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiMyMjIiIG9wYWNpdHk9IjAuMDI4NjY2NjY2NjY2NjY2NjY3Ij48L2NpcmNsZT48Y2lyY2xlIGN4PSI3Mi41IiBjeT0iMTQ1IiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiMyMjIiIG9wYWNpdHk9IjAuMDI4NjY2NjY2NjY2NjY2NjY3Ij48L2NpcmNsZT48Y2lyY2xlIGN4PSI5Ni42NjY2NjY2NjY2NjY2NiIgY3k9IjAiIHI9IjI0LjE2NjY2NjY2NjY2NjY2NCIgZmlsbD0iI2RkZCIgb3BhY2l0eT0iMC4xMjQwMDAwMDAwMDAwMDAwMSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iOTYuNjY2NjY2NjY2NjY2NjYiIGN5PSIxNDUiIHI9IjI0LjE2NjY2NjY2NjY2NjY2NCIgZmlsbD0iI2RkZCIgb3BhY2l0eT0iMC4xMjQwMDAwMDAwMDAwMDAwMSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMTIwLjgzMzMzMzMzMzMzMzMxIiBjeT0iMCIgcj0iMjQuMTY2NjY2NjY2NjY2NjY0IiBmaWxsPSIjMjIyIiBvcGFjaXR5PSIwLjE1Ij48L2NpcmNsZT48Y2lyY2xlIGN4PSIxMjAuODMzMzMzMzMzMzMzMzEiIGN5PSIxNDUiIHI9IjI0LjE2NjY2NjY2NjY2NjY2NCIgZmlsbD0iIzIyMiIgb3BhY2l0eT0iMC4xNSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMCIgY3k9IjI0LjE2NjY2NjY2NjY2NjY2NCIgcj0iMjQuMTY2NjY2NjY2NjY2NjY0IiBmaWxsPSIjZGRkIiBvcGFjaXR5PSIwLjAzNzMzMzMzMzMzMzMzMzMzIj48L2NpcmNsZT48Y2lyY2xlIGN4PSIxNDUiIGN5PSIyNC4xNjY2NjY2NjY2NjY2NjQiIHI9IjI0LjE2NjY2NjY2NjY2NjY2NCIgZmlsbD0iI2RkZCIgb3BhY2l0eT0iMC4wMzczMzMzMzMzMzMzMzMzMyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjQuMTY2NjY2NjY2NjY2NjY0IiBjeT0iMjQuMTY2NjY2NjY2NjY2NjY0IiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiNkZGQiIG9wYWNpdHk9IjAuMDU0NjY2NjY2NjY2NjY2NjciPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjQ4LjMzMzMzMzMzMzMzMzMzIiBjeT0iMjQuMTY2NjY2NjY2NjY2NjY0IiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiMyMjIiIG9wYWNpdHk9IjAuMDQ2Ij48L2NpcmNsZT48Y2lyY2xlIGN4PSI3Mi41IiBjeT0iMjQuMTY2NjY2NjY2NjY2NjY0IiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiMyMjIiIG9wYWNpdHk9IjAuMDI4NjY2NjY2NjY2NjY2NjY3Ij48L2NpcmNsZT48Y2lyY2xlIGN4PSI5Ni42NjY2NjY2NjY2NjY2NiIgY3k9IjI0LjE2NjY2NjY2NjY2NjY2NCIgcj0iMjQuMTY2NjY2NjY2NjY2NjY0IiBmaWxsPSIjZGRkIiBvcGFjaXR5PSIwLjA3MjAwMDAwMDAwMDAwMDAxIj48L2NpcmNsZT48Y2lyY2xlIGN4PSIxMjAuODMzMzMzMzMzMzMzMzEiIGN5PSIyNC4xNjY2NjY2NjY2NjY2NjQiIHI9IjI0LjE2NjY2NjY2NjY2NjY2NCIgZmlsbD0iI2RkZCIgb3BhY2l0eT0iMC4wMiI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMCIgY3k9IjQ4LjMzMzMzMzMzMzMzMzMzIiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiMyMjIiIG9wYWNpdHk9IjAuMDI4NjY2NjY2NjY2NjY2NjY3Ij48L2NpcmNsZT48Y2lyY2xlIGN4PSIxNDUiIGN5PSI0OC4zMzMzMzMzMzMzMzMzMyIgcj0iMjQuMTY2NjY2NjY2NjY2NjY0IiBmaWxsPSIjMjIyIiBvcGFjaXR5PSIwLjAyODY2NjY2NjY2NjY2NjY2NyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjQuMTY2NjY2NjY2NjY2NjY0IiBjeT0iNDguMzMzMzMzMzMzMzMzMzMiIHI9IjI0LjE2NjY2NjY2NjY2NjY2NCIgZmlsbD0iI2RkZCIgb3BhY2l0eT0iMC4xMjQwMDAwMDAwMDAwMDAwMSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iNDguMzMzMzMzMzMzMzMzMzMiIGN5PSI0OC4zMzMzMzMzMzMzMzMzMyIgcj0iMjQuMTY2NjY2NjY2NjY2NjY0IiBmaWxsPSIjZGRkIiBvcGFjaXR5PSIwLjEyNDAwMDAwMDAwMDAwMDAxIj48L2NpcmNsZT48Y2lyY2xlIGN4PSI3Mi41IiBjeT0iNDguMzMzMzMzMzMzMzMzMzMiIHI9IjI0LjE2NjY2NjY2NjY2NjY2NCIgZmlsbD0iIzIyMiIgb3BhY2l0eT0iMC4wODA2NjY2NjY2NjY2NjY2NiI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iOTYuNjY2NjY2NjY2NjY2NjYiIGN5PSI0OC4zMzMzMzMzMzMzMzMzMyIgcj0iMjQuMTY2NjY2NjY2NjY2NjY0IiBmaWxsPSIjZGRkIiBvcGFjaXR5PSIwLjA1NDY2NjY2NjY2NjY2NjY3Ij48L2NpcmNsZT48Y2lyY2xlIGN4PSIxMjAuODMzMzMzMzMzMzMzMzEiIGN5PSI0OC4zMzMzMzMzMzMzMzMzMyIgcj0iMjQuMTY2NjY2NjY2NjY2NjY0IiBmaWxsPSIjMjIyIiBvcGFjaXR5PSIwLjA0NiI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMCIgY3k9IjcyLjUiIHI9IjI0LjE2NjY2NjY2NjY2NjY2NCIgZmlsbD0iI2RkZCIgb3BhY2l0eT0iMC4xMDY2NjY2NjY2NjY2NjY2NyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMTQ1IiBjeT0iNzIuNSIgcj0iMjQuMTY2NjY2NjY2NjY2NjY0IiBmaWxsPSIjZGRkIiBvcGFjaXR5PSIwLjEwNjY2NjY2NjY2NjY2NjY3Ij48L2NpcmNsZT48Y2lyY2xlIGN4PSIyNC4xNjY2NjY2NjY2NjY2NjQiIGN5PSI3Mi41IiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiNkZGQiIG9wYWNpdHk9IjAuMDg5MzMzMzMzMzMzMzMzMzMiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjQ4LjMzMzMzMzMzMzMzMzMzIiBjeT0iNzIuNSIgcj0iMjQuMTY2NjY2NjY2NjY2NjY0IiBmaWxsPSIjMjIyIiBvcGFjaXR5PSIwLjAyODY2NjY2NjY2NjY2NjY2NyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iNzIuNSIgY3k9IjcyLjUiIHI9IjI0LjE2NjY2NjY2NjY2NjY2NCIgZmlsbD0iI2RkZCIgb3BhY2l0eT0iMC4wNzIwMDAwMDAwMDAwMDAwMSI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iOTYuNjY2NjY2NjY2NjY2NjYiIGN5PSI3Mi41IiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiNkZGQiIG9wYWNpdHk9IjAuMDcyMDAwMDAwMDAwMDAwMDEiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyMC44MzMzMzMzMzMzMzMzMSIgY3k9IjcyLjUiIHI9IjI0LjE2NjY2NjY2NjY2NjY2NCIgZmlsbD0iIzIyMiIgb3BhY2l0eT0iMC4wNjMzMzMzMzMzMzMzMzMzNCI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMCIgY3k9Ijk2LjY2NjY2NjY2NjY2NjY2IiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiNkZGQiIG9wYWNpdHk9IjAuMTQxMzMzMzMzMzMzMzMzMzQiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjE0NSIgY3k9Ijk2LjY2NjY2NjY2NjY2NjY2IiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiNkZGQiIG9wYWNpdHk9IjAuMTQxMzMzMzMzMzMzMzMzMzQiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjI0LjE2NjY2NjY2NjY2NjY2NCIgY3k9Ijk2LjY2NjY2NjY2NjY2NjY2IiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiNkZGQiIG9wYWNpdHk9IjAuMDcyMDAwMDAwMDAwMDAwMDEiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjQ4LjMzMzMzMzMzMzMzMzMzIiBjeT0iOTYuNjY2NjY2NjY2NjY2NjYiIHI9IjI0LjE2NjY2NjY2NjY2NjY2NCIgZmlsbD0iI2RkZCIgb3BhY2l0eT0iMC4wMzczMzMzMzMzMzMzMzMzMyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iNzIuNSIgY3k9Ijk2LjY2NjY2NjY2NjY2NjY2IiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiMyMjIiIG9wYWNpdHk9IjAuMDI4NjY2NjY2NjY2NjY2NjY3Ij48L2NpcmNsZT48Y2lyY2xlIGN4PSI5Ni42NjY2NjY2NjY2NjY2NiIgY3k9Ijk2LjY2NjY2NjY2NjY2NjY2IiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiMyMjIiIG9wYWNpdHk9IjAuMDYzMzMzMzMzMzMzMzMzMzQiPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyMC44MzMzMzMzMzMzMzMzMSIgY3k9Ijk2LjY2NjY2NjY2NjY2NjY2IiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiMyMjIiIG9wYWNpdHk9IjAuMDk4Ij48L2NpcmNsZT48Y2lyY2xlIGN4PSIwIiBjeT0iMTIwLjgzMzMzMzMzMzMzMzMxIiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiNkZGQiIG9wYWNpdHk9IjAuMDU0NjY2NjY2NjY2NjY2NjciPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjE0NSIgY3k9IjEyMC44MzMzMzMzMzMzMzMzMSIgcj0iMjQuMTY2NjY2NjY2NjY2NjY0IiBmaWxsPSIjZGRkIiBvcGFjaXR5PSIwLjA1NDY2NjY2NjY2NjY2NjY3Ij48L2NpcmNsZT48Y2lyY2xlIGN4PSIyNC4xNjY2NjY2NjY2NjY2NjQiIGN5PSIxMjAuODMzMzMzMzMzMzMzMzEiIHI9IjI0LjE2NjY2NjY2NjY2NjY2NCIgZmlsbD0iI2RkZCIgb3BhY2l0eT0iMC4wMzczMzMzMzMzMzMzMzMzMyI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iNDguMzMzMzMzMzMzMzMzMzMiIGN5PSIxMjAuODMzMzMzMzMzMzMzMzEiIHI9IjI0LjE2NjY2NjY2NjY2NjY2NCIgZmlsbD0iIzIyMiIgb3BhY2l0eT0iMC4xMTUzMzMzMzMzMzMzMzMzNCI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iNzIuNSIgY3k9IjEyMC44MzMzMzMzMzMzMzMzMSIgcj0iMjQuMTY2NjY2NjY2NjY2NjY0IiBmaWxsPSIjMjIyIiBvcGFjaXR5PSIwLjA2MzMzMzMzMzMzMzMzMzM0Ij48L2NpcmNsZT48Y2lyY2xlIGN4PSI5Ni42NjY2NjY2NjY2NjY2NiIgY3k9IjEyMC44MzMzMzMzMzMzMzMzMSIgcj0iMjQuMTY2NjY2NjY2NjY2NjY0IiBmaWxsPSIjMjIyIiBvcGFjaXR5PSIwLjA0NiI+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMTIwLjgzMzMzMzMzMzMzMzMxIiBjeT0iMTIwLjgzMzMzMzMzMzMzMzMxIiByPSIyNC4xNjY2NjY2NjY2NjY2NjQiIGZpbGw9IiNkZGQiIG9wYWNpdHk9IjAuMDIiPjwvY2lyY2xlPjwvc3ZnPg==&quot;);height: 430px">
         <div class="container" style="padding-top:150px">
@@ -283,37 +254,8 @@
     </article>
 
 </div>
-<footer class="container">
-
-    <div class="site-footer">
-
-        <div class="copyright pull-left">
-            您是第
-
-            个访问者，感谢您的光临!
-        </div>
-
-        <a href="https://github.com/ityouknow" target="_blank" aria-label="view source code">
-            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
-        </a>
-
-
-        <div class="pull-right">
-            <a href="javascript:window.scrollTo(0,0)">TOP</a>
-        </div>
-
-    </div>
-
-    <!-- Third-Party JS -->
-    <script type="text/javascript" src="/html/js/geopattern.min.js"></script>
-
-    <!-- My JS -->
-    <script type="text/javascript" src="/html/js/script.js"></script>
-
-
-
-
-
-</footer>
+<!--footer-->
+<div th:replace="html/blog/footer">...</div>
+<!--footer-->
 </body>
 </html>

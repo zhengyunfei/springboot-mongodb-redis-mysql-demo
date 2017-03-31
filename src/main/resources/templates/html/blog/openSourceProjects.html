@@ -1,82 +1,38 @@
 <!DOCTYPE html>
 <!-- saved from url=(0036)http://www.ityouknow.com/open-source -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
     <!-- Favicon Icon
     <link rel="shortcut icon" type="image/x-icon" href="http://www.ityouknow.com/assets/images/favicon.png"> -->
-
     <title>Open Source Projects</title>
     <meta name="description" content="this is my blog"/>
-
    <!-- <link rel="canonical" href="http://ityouknow.com/open-source.html">
     <link rel="alternate" type="application/rss+xml" title="The world is colorful" href="http://ityouknow.com/feed.xml">-->
-
     <script type="text/javascript" src="/html/js/jquery.min.js"></script>
-
     <!-- Third-Party CSS -->
     <link rel="stylesheet" href="/html/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/html/css/octicons.css"/>
     <link rel="stylesheet" href="/html/css/hover-min.css"/>
     <link rel="stylesheet" href="/html/css/user-content.min.css"/>
     <link rel="stylesheet" href="/html/css/syntax.css"/>
-
     <!-- My CSS -->
     <link rel="stylesheet" href="/html/css/common.css"/>
-
     <!-- CSS set in page -->
-
     <link rel="stylesheet" href="/html/css/open-source.css"/>
-
-
     <!-- CSS set in layout -->
-
-
     <script type="text/javascript" src="/html/js/bootstrap.min.js"></script>
-
 </head>
-
-
-<body><div id="qrcode"></div>
-
-<header class="site-header">
-    <div class="container">
-        <a id="site-header-brand" href="http://www.ityouknow.com/" title="纯洁的微笑">
-            <span class="octicon octicon-mark-github"></span> 纯洁的微笑
-        </a>
-        <nav class="site-header-nav" role="navigation">
-
-            <a href="http://www.ityouknow.com/" class=" site-header-nav-item hvr-underline-from-center" target="" title="Home">
-                Home
-            </a>
-
-            <a href="http://www.ityouknow.com/spring-boot" class=" site-header-nav-item hvr-underline-from-center" target="" title="Spring-Boot">
-                Spring-Boot
-            </a>
-
-            <a href="http://www.ityouknow.com/open-source" class=" site-header-nav-item hvr-underline-from-center" target="" title="Open-Source">
-                Open-Source
-            </a>
-
-            <a href="http://www.ityouknow.com/blog" class=" site-header-nav-item hvr-underline-from-center" target="" title="Blog">
-                Blog
-            </a>
-
-            <a href="http://www.ityouknow.com/link" class=" site-header-nav-item hvr-underline-from-center" target="" title="Link">
-                Link
-            </a>
-
-            <a href="http://www.ityouknow.com/about" class=" site-header-nav-item hvr-underline-from-center" target="" title="About">
-                About
-            </a>
-
-        </nav>
-    </div>
-</header>
-
-
+<body>
+<div id="qrcode"></div>
+<!--header-->
+<div th:replace="html/blog/header">...</div>
+<!--header-->
+<!--content-->
 <div class="content">
 
     <div id="container-open-source">
@@ -347,45 +303,10 @@
 
 
 </div>
-
-<footer class="container">
-
-    <div class="site-footer">
-
-        <div class="copyright pull-left">
-            您是第
-
-            个访问者，感谢您的光临!
-        </div>
-
-        <a href="https://github.com/ityouknow" target="_blank" aria-label="view source code">
-            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
-        </a>
-.js
-        <div class="pull-right">
-            <a href="javascript:window.scrollTo(0,0)">TOP</a>
-        </div>
-
-    </div>
-
-    <!-- Third-Party JS -->
-    <script type="text/javascript" src="/html/js/geopattern.min.js"></script>
-
-    <!-- My JS -->
-    <script type="text/javascript" src="/html/js/script.js"></script>
-
-
-    <script src="/html/js/underscore-min.js"></script>
-
-
-
-
-
-
-</footer>
-
-
-
+<!--content-->
+<!--footer-->
+<div th:replace="html/blog/footer">...</div>
+<!--footer-->
 
 
 </body></html>

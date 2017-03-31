@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <!-- saved from url=(0030)http://www.ityouknow.com/about -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -44,43 +47,9 @@
 
 
 <body><div id="qrcode"></div>
-
-<header class="site-header">
-    <div class="container">
-        <a id="site-header-brand" href="http://www.ityouknow.com/" title="纯洁的微笑">
-            <span class="octicon octicon-mark-github"></span> 纯洁的微笑
-        </a>
-        <nav class="site-header-nav" role="navigation">
-
-            <a href="http://www.ityouknow.com/" class=" site-header-nav-item hvr-underline-from-center" target="" title="Home">
-                Home
-            </a>
-
-            <a href="http://www.ityouknow.com/spring-boot" class=" site-header-nav-item hvr-underline-from-center" target="" title="Spring-Boot">
-                Spring-Boot
-            </a>
-
-            <a href="http://www.ityouknow.com/open-source" class=" site-header-nav-item hvr-underline-from-center" target="" title="Open-Source">
-                Open-Source
-            </a>
-
-            <a href="http://www.ityouknow.com/blog" class=" site-header-nav-item hvr-underline-from-center" target="" title="Blog">
-                Blog
-            </a>
-
-            <a href="http://www.ityouknow.com/link" class=" site-header-nav-item hvr-underline-from-center" target="" title="Link">
-                Link
-            </a>
-
-            <a href="http://www.ityouknow.com/about" class=" site-header-nav-item hvr-underline-from-center" target="" title="About">
-                About
-            </a>
-
-        </nav>
-    </div>
-</header>
-
-
+<!--header-->
+<div th:replace="html/blog/header">...</div>
+<!--header-->
 <div class="content">
     <section class="jumbotron geopattern" data-pattern-id="About Me" style="background-image: url(&quot;data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJyZ2IoMTYxLDQ2LDY0KSI+PC9yZWN0PjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2RkZCIgZmlsbC1vcGFjaXR5PSIwLjEyNDAwMDAwMDAwMDAwMDAxIiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iNTAiIHk9IjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iIzIyMiIgZmlsbC1vcGFjaXR5PSIwLjExNTMzMzMzMzMzMzMzMzM0IiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iMTAwIiB5PSIwIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiNkZGQiIGZpbGwtb3BhY2l0eT0iMC4wMiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4wMiI+PC9yZWN0PjxyZWN0IHg9IjE1MCIgeT0iMCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjMjIyIiBmaWxsLW9wYWNpdHk9IjAuMDgwNjY2NjY2NjY2NjY2NjYiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLW9wYWNpdHk9IjAuMDIiPjwvcmVjdD48cmVjdCB4PSIyMDAiIHk9IjAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2RkZCIgZmlsbC1vcGFjaXR5PSIwLjA4OTMzMzMzMzMzMzMzMzMzIiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iMjUwIiB5PSIwIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiNkZGQiIGZpbGwtb3BhY2l0eT0iMC4xNDEzMzMzMzMzMzMzMzMzNCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4wMiI+PC9yZWN0PjxyZWN0IHg9IjAiIHk9IjUwIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiNkZGQiIGZpbGwtb3BhY2l0eT0iMC4xMjQwMDAwMDAwMDAwMDAwMSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4wMiI+PC9yZWN0PjxyZWN0IHg9IjUwIiB5PSI1MCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjMjIyIiBmaWxsLW9wYWNpdHk9IjAuMDgwNjY2NjY2NjY2NjY2NjYiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLW9wYWNpdHk9IjAuMDIiPjwvcmVjdD48cmVjdCB4PSIxMDAiIHk9IjUwIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiNkZGQiIGZpbGwtb3BhY2l0eT0iMC4xNDEzMzMzMzMzMzMzMzMzNCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4wMiI+PC9yZWN0PjxyZWN0IHg9IjE1MCIgeT0iNTAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iIzIyMiIgZmlsbC1vcGFjaXR5PSIwLjA0NiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4wMiI+PC9yZWN0PjxyZWN0IHg9IjIwMCIgeT0iNTAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2RkZCIgZmlsbC1vcGFjaXR5PSIwLjEyNDAwMDAwMDAwMDAwMDAxIiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iMjUwIiB5PSI1MCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjZGRkIiBmaWxsLW9wYWNpdHk9IjAuMTI0MDAwMDAwMDAwMDAwMDEiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLW9wYWNpdHk9IjAuMDIiPjwvcmVjdD48cmVjdCB4PSIwIiB5PSIxMDAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iIzIyMiIgZmlsbC1vcGFjaXR5PSIwLjA0NiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4wMiI+PC9yZWN0PjxyZWN0IHg9IjUwIiB5PSIxMDAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2RkZCIgZmlsbC1vcGFjaXR5PSIwLjEwNjY2NjY2NjY2NjY2NjY3IiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iMTAwIiB5PSIxMDAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2RkZCIgZmlsbC1vcGFjaXR5PSIwLjAyIiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iMTUwIiB5PSIxMDAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2RkZCIgZmlsbC1vcGFjaXR5PSIwLjA3MjAwMDAwMDAwMDAwMDAxIiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iMjAwIiB5PSIxMDAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iIzIyMiIgZmlsbC1vcGFjaXR5PSIwLjExNTMzMzMzMzMzMzMzMzM0IiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iMjUwIiB5PSIxMDAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2RkZCIgZmlsbC1vcGFjaXR5PSIwLjE0MTMzMzMzMzMzMzMzMzM0IiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iMCIgeT0iMTUwIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiNkZGQiIGZpbGwtb3BhY2l0eT0iMC4xNDEzMzMzMzMzMzMzMzMzNCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4wMiI+PC9yZWN0PjxyZWN0IHg9IjUwIiB5PSIxNTAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iIzIyMiIgZmlsbC1vcGFjaXR5PSIwLjA2MzMzMzMzMzMzMzMzMzM0IiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iMTAwIiB5PSIxNTAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iIzIyMiIgZmlsbC1vcGFjaXR5PSIwLjA5OCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4wMiI+PC9yZWN0PjxyZWN0IHg9IjE1MCIgeT0iMTUwIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiMyMjIiIGZpbGwtb3BhY2l0eT0iMC4xMTUzMzMzMzMzMzMzMzMzNCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4wMiI+PC9yZWN0PjxyZWN0IHg9IjIwMCIgeT0iMTUwIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiMyMjIiIGZpbGwtb3BhY2l0eT0iMC4wMjg2NjY2NjY2NjY2NjY2NjciIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLW9wYWNpdHk9IjAuMDIiPjwvcmVjdD48cmVjdCB4PSIyNTAiIHk9IjE1MCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiBmaWxsPSIjMjIyIiBmaWxsLW9wYWNpdHk9IjAuMTUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLW9wYWNpdHk9IjAuMDIiPjwvcmVjdD48cmVjdCB4PSIwIiB5PSIyMDAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iIzIyMiIgZmlsbC1vcGFjaXR5PSIwLjA0NiIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4wMiI+PC9yZWN0PjxyZWN0IHg9IjUwIiB5PSIyMDAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2RkZCIgZmlsbC1vcGFjaXR5PSIwLjE0MTMzMzMzMzMzMzMzMzM0IiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iMTAwIiB5PSIyMDAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2RkZCIgZmlsbC1vcGFjaXR5PSIwLjEwNjY2NjY2NjY2NjY2NjY3IiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iMTUwIiB5PSIyMDAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iIzIyMiIgZmlsbC1vcGFjaXR5PSIwLjA4MDY2NjY2NjY2NjY2NjY2IiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iMjAwIiB5PSIyMDAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iIzIyMiIgZmlsbC1vcGFjaXR5PSIwLjA4MDY2NjY2NjY2NjY2NjY2IiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iMjUwIiB5PSIyMDAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2RkZCIgZmlsbC1vcGFjaXR5PSIwLjA3MjAwMDAwMDAwMDAwMDAxIiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iMCIgeT0iMjUwIiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIGZpbGw9IiNkZGQiIGZpbGwtb3BhY2l0eT0iMC4xMjQwMDAwMDAwMDAwMDAwMSIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utb3BhY2l0eT0iMC4wMiI+PC9yZWN0PjxyZWN0IHg9IjUwIiB5PSIyNTAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2RkZCIgZmlsbC1vcGFjaXR5PSIwLjA4OTMzMzMzMzMzMzMzMzMzIiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iMTAwIiB5PSIyNTAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2RkZCIgZmlsbC1vcGFjaXR5PSIwLjE0MTMzMzMzMzMzMzMzMzM0IiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iMTUwIiB5PSIyNTAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2RkZCIgZmlsbC1vcGFjaXR5PSIwLjAzNzMzMzMzMzMzMzMzMzMzIiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iMjAwIiB5PSIyNTAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2RkZCIgZmlsbC1vcGFjaXR5PSIwLjEyNDAwMDAwMDAwMDAwMDAxIiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PHJlY3QgeD0iMjUwIiB5PSIyNTAiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iI2RkZCIgZmlsbC1vcGFjaXR5PSIwLjA1NDY2NjY2NjY2NjY2NjY3IiBzdHJva2U9IiMwMDAiIHN0cm9rZS1vcGFjaXR5PSIwLjAyIj48L3JlY3Q+PC9zdmc+&quot;);height: 430px" >
         <div class="container" style="padding-top:150px">
@@ -221,42 +190,9 @@
     </article>
 
 </div>
-
-<footer class="container">
-
-    <div class="site-footer">
-
-        <div class="copyright pull-left">
-            您是第
-
-            个访问者，感谢您的光临!
-        </div>
-
-        <a href="https://github.com/ityouknow" target="_blank" aria-label="view source code">
-            <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
-        </a>
-
-        <div class="pull-right">
-            <a href="javascript:window.scrollTo(0,0)">TOP</a>
-        </div>
-
-    </div>
-
-    <!-- Third-Party JS -->
-    <script type="text/javascript" src="/html/js/geopattern.min.js"></script>
-
-    <!-- My JS -->
-    <script type="text/javascript" src="/html/js/script.js"></script>
-
-
-
-
-
-
-
-</footer>
-
-
+<!--footer-->
+<div th:replace="html/blog/footer">...</div>
+<!--footer-->
 
 
 
