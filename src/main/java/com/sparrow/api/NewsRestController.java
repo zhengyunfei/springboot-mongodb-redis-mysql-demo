@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(value = "/api/v1", name = "新闻API")
+@RequestMapping(value = "/api/v1", name = "文章API")
 public class NewsRestController {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(NewsRestController.class);
@@ -36,7 +36,7 @@ public class NewsRestController {
 	public ResponseEntity<Message> createNews(@Valid @RequestBody NewsCreateForm form, BindingResult bindingResult) {
 		try {
 			News news = newsService.create(form);
-			message.setMsg(1, "新闻创建成功", news);
+			message.setMsg(1, "文章创建成功", news);
 			return new ResponseEntity<Message>(message, HttpStatus.OK);
 		} catch (DataIntegrityViolationException e) {
 			LOGGER.warn("create news error", e);
