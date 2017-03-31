@@ -54,9 +54,10 @@
 											data-identifier="true">文章ID</th>
 										<th data-column-id="title">文章标题</th>
 										<th data-column-id="img">图像</th>
-										<th data-column-id="contents">摘要</th>
+										<!--<th data-column-id="contents">摘要</th>-->
 										<th data-column-id="datetime">时间</th>
 										<th data-column-id="datetime">操作</th>
+										<th data-column-id="yulan">预览</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -64,19 +65,20 @@
 										<td th:text="${news.id}"></td>
 										<td th:text="${news.title}"></td>
 										<td th:text="${news.img}"></td>
-										<td th:utext="${news.contents}"></td>
+										<!--<td th:utext="${news.contents}"></td>-->
 										<td th:text="${news.datetime}"></td>
 										<td>
 											<a th:href="@{/news/edit(id=${news.id})}" title="编辑">
 												<i class="icon-edit"></i>
 											</a>
-										</td>
-										<td>
+										<!--</td>
+										<td>-->
 											<a th:href="@{/news/del(id=${news.id})}" title="删除">
 												<i class="icon-trash visual red"
 												onclick="return confirm('确定要删除吗?')"></i>
 											</a>
 										</td>
+										<td><a th:href="@{/news/detail(id=${news.id})}" target="_blank" title="预览">预览</a></td>
 									</tr>
 								</tbody>
 							</table>

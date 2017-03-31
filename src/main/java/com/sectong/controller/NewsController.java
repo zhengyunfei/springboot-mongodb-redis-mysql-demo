@@ -34,10 +34,12 @@ public class NewsController {
 	 * @return
 	 */
 	@GetMapping("/list")
-	public String adminNews(Model model) {
+	public String adminNews(Model model,HttpServletRequest request) {
 		model.addAttribute("news", true);
 		Iterable<News> newslist = newsRepository.findAll();
 		model.addAttribute("newslist", newslist);
+		String domain=ServerResourcesUtil.getCurrentDomainUrl(request);
+		model.addAttribute("domain",domain);
 		return "admin/news";
 	}
 
@@ -85,7 +87,7 @@ public class NewsController {
 		User user = userService.getCurrentUser();
 		news.setUser(user);
 		newsRepository.save(news);
-		return "redirect:/admin/news";
+		return "redirect:/news/list";
 	}
 
 	/**
@@ -101,6 +103,36 @@ public class NewsController {
 	public String delNews(Model model, @RequestParam Long id) {
 		newsRepository.delete(id);
 		return "redirect:/admin/news";
+
+	}
+
+
+	/**
+	 * 新闻详情页面
+	 * @author:郑云飞
+	 * @createDate:2017-03-28
+	 * @param model
+	 * @param id
+	 * @return
+	 */
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@GetMapping("/detail")
+	public String detailNews(Model model, @RequestParam Long id) {
+		News news=newsRepository.findOne(id);
+		model.addAttribute("bo",news);
+		return "html/detail";
+
+	}
+	/**
+	 * 文章系列
+	 * @author:郑云飞
+	 * @createDate:2017-03-28
+	 * @param model
+	 * @return
+	 */
+	@GetMapping("/xilie")
+	public String xilie(Model model) {
+		return "html/xilie";
 
 	}
 
