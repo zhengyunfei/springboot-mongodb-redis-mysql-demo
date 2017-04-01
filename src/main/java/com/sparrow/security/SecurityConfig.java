@@ -47,24 +47,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		}
 	}
 
-	/**
-	 * Web Form表单登录
-	 *
-	 * @author 郑云飞
-	 *
-	 */
-	@Configuration
-	@Order(2)
-	public static class FormLoginWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
-
-		@Override
-		protected void configure(HttpSecurity http) throws Exception {
-			http.authorizeRequests()
-					.antMatchers("/api/create", "/", "/assets/**", "/plugins/**", "/static/**", "/bootstrap/**",
-							"/v2/api-docs/**", "/swagger-ui.html**", "/webjars/**", "/swagger-resources/**", "/api/**") // 免认证目录
-					.permitAll().antMatchers("/admin/**").hasRole("ADMIN")// ADMIN角色可以访问/admin目录
-					.anyRequest().authenticated().and().formLogin().loginPage("/login")// 自定义登录页为/login
-					.permitAll().and().logout().permitAll().and().csrf().disable();
-		}
+/**
+ * Web Form表单登录
+ * @author 郑云飞
+ */
+@Configuration
+@Order(2)
+public static class FormLoginWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests()
+		.antMatchers("/api/create", "/", "/assets/**", "/plugins/**", "/static/**", "/bootstrap/**",
+				"/v2/api-docs/**", "/swagger-ui.html**", "/webjars/**",
+				"/swagger-resources/**", "/api/**","/blog/**","/news/**","/html/**") // 免认证目录
+		.permitAll().antMatchers("/admin/**").hasRole("ADMIN")// ADMIN角色可以访问/admin目录
+		.anyRequest().authenticated().and().formLogin().loginPage("/login")// 自定义登录页为/login
+		.permitAll().and().logout().permitAll().and().csrf().disable();
 	}
+}
 }
