@@ -2316,7 +2316,9 @@ textarea[readonly] {
   background-color: #f9f9f9;
   color: #adadad;
 }
-.help-block,
+.help-block{
+  color: red;
+}
 .help-inline {
   color: #adadad;
 }

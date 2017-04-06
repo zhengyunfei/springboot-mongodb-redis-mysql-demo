@@ -1,6 +1,18 @@
 // 阻止输出log
 // wangEditor.config.printLog = false;
 var editor = new wangEditor('contents');
+var customMenus={
+    'insertcode':{
+        'title':'插入代码1',
+        'type':'modal',
+        'txt':'fa fa-code',
+        'modal':function () {
+            var $modal=$('<div>这是一个弹出框...</div>');
+            return $modal;
+        }
+    }
+}
+editor.config.insertcode=customMenus;
 
 // 上传图片
 editor.config.uploadImgUrl = '/upload';
@@ -21,7 +33,7 @@ editor.config.emotionsShow = 'value';
 editor.config.emotions = {
     'default': {
         title: '默认',
-        data: './emotions.data'
+        data: '/plugins/wangEditor-2.1.23/test/emotions.data'
     },
     'weibo': {
         title: '微博表情',

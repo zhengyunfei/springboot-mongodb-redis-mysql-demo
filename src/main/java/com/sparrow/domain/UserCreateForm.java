@@ -4,7 +4,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * 创建用户字段POJO定义
- * @author:郑云飞
+ * @author:贤名
  * @createDate:2017-03-28
  *
  */

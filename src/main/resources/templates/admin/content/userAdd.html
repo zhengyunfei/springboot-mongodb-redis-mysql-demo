@@ -46,9 +46,9 @@
 						</div>
 						<div class="content no-padding">
 							<form action="#" th:action="@{/user/edit}"
-								th:object="${userAdd}" method="post">
+								th:object="${userAdd}" method="post" id="myForm">
 								<p>
-									用户名: <input type="text" th:field="*{username}" />
+									名称: <input type="text" th:field="*{username}" />
 								</p>
 								<p>
 									密码: <input type="password" th:field="*{password}" />
@@ -59,7 +59,7 @@
 								<p>
 									状态:
 									<select rows="3" cols="20" th:field="*{enabled}"
-										style="margin-left: 0px;">
+										style="margin-left: 0px;width: 162px">
 										<option value="1" selected="selected">启用</option>
 										<option value="0">禁用</option>
 									</select>
@@ -73,7 +73,12 @@
 					</div>
 				</div>
 			</div>
-
+			<!-- Form Validation -->
+			<script type="text/javascript"
+					src="/plugins/validation/jquery.validate.min.js"></script>
+			<script type="text/javascript"
+					src="/plugins/validation/localization/messages_zh.js"></script>
+			<script  type="text/javascript" src="/plugins/validation/myValidation/userValidation.js"></script>
 			<!-- /.row -->
 			<!-- /Page Content -->
 		</div>

@@ -1,12 +1,18 @@
 package com.sparrow.controller;
+
 import com.sparrow.domain.User;
+import com.sparrow.domain.UserCreateForm;
 import com.sparrow.repository.UserRepository;
 import com.sparrow.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -58,7 +64,7 @@ public class UserController {
 	 */
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	@PostMapping("/add")
-	public String userAdd(@ModelAttribute User user) {
+	public String userAdd(@ModelAttribute User user, @Validated UserCreateForm userCreateForm) {
 		userRepository.save(user);
 		return "redirect:/user/list";
 	}
@@ -79,14 +85,19 @@ public class UserController {
 
 	/**
 	 * 用户修改提交操作
-	 * @author:郑云飞
+	 * @author:贤名
 	 * @createDate:2017-03-28
 	 * @return
 	 */
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@PostMapping("/edit")
-	public String userSubmit(@ModelAttribute User user) {
-		userRepository.save(user);
+	@RequestMapping(value = "/edit")
+	public String userSubmit(final @ModelAttribute User user,final  @Validated UserCreateForm userCreateForm, BindingResult result,final ModelMap model) {
+		if (result.hasErrors()) {
+			return "/user/edit";
+		}else{
+			userRepository.save(user);
+		}
+		model.clear();
 		return "redirect:/user/list";
 	}
 
@@ -105,4 +116,19 @@ public class UserController {
 		return "redirect:/user/list";
 
 	}
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@PostMapping("/findUserByName")
+	@ResponseBody
+	public Object userEdit(@RequestParam String username,@RequestParam String originalName) {
+		if(!StringUtils.isEmptyOrWhitespace(username)&&!username.equals(originalName)){
+			User user=userRepository.findByUsername(username);
+			if(null==user){
+				return true;
+			}
+		}else{
+			return true;
+		}
+		return false;
+	}
+
 }
