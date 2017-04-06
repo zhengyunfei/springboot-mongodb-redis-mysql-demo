@@ -72,17 +72,17 @@
 						</div>
 						<div class="content no-padding">
 							<table id="grid-data"
-								class="table table-condensed table-hover table-striped">
+								class="table table-condensed table-hover table-striped" data-toggle="bootgrid" data-ajax="true" data-url="/log/pagejson">
 								<thead>
 									<tr>
 										<th data-column-id="id">序号</th>
-										<th data-column-id="title">内容</th>
+										<th data-column-id="content">内容</th>
 										<th data-column-id="createTime">时间</th>
 										<th data-column-id="ip">ip</th>
 										<th data-column-id="mobile">手机</th>
 									</tr>
 								</thead>
-								<tbody>
+								<!--<tbody>
 									<tr th:each="log,iterStat  : ${list}">
 										<td th:text="${iterStat.index}">index</td>
 										<td style="width: 200px;" th:title="${log.content}" th:text="${log.content}"></td>
@@ -90,13 +90,21 @@
 										<td th:text="${log.ip}"></td>
 										<td th:text="${log.mobile}"></td>
 									</tr>
-								</tbody>
+								</tbody>-->
 							</table>
 						</div>
 					</div>
 				</div>
 			</div>
-
+			<link href="/plugins/bootgrid/jquery.bootgrid.min.css"
+				  rel="stylesheet" />
+			<script src="/plugins/bootgrid/jquery.bootgrid.min.js"></script>
+			<script type="text/javascript">
+                $("#grid-data").bootgrid({
+                    ajax : true,
+                    caseSensitive : false
+                });
+			</script>
 			<!-- /.row -->
 			<!-- /Page Content -->
 		</div>
