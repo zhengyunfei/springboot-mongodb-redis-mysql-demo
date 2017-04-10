@@ -1,9 +1,12 @@
 package com.sparrow.service;
 
+import com.sparrow.dao.IArticleDao;
+import com.sparrow.dao.support.IBaseDao;
 import com.sparrow.domain.News;
 import com.sparrow.domain.NewsCreateForm;
 import com.sparrow.domain.User;
 import com.sparrow.repository.NewsRepository;
+import com.sparrow.service.support.impl.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,14 +21,18 @@ import java.util.Date;
  *
  */
 @Service
-public class NewsServiceImpl implements NewsService {
+public class NewsServiceImpl extends BaseServiceImpl<News, Integer> implements NewsService {
 
 	private NewsRepository newsRepository;
 	private UserService userService;
-
+	@Autowired
+	private IArticleDao articleDao;
+	@Override
+	public IBaseDao<News, Integer> getBaseDao() {
+		return this.articleDao;
+	}
 	/**
 	 * 注入NewsRepository
-	 *
 	 * @param newsRepository
 	 * @param userService
 	 */
@@ -53,8 +60,14 @@ public class NewsServiceImpl implements NewsService {
 	 */
 	@Override
 	public Page<News> getNewsList(Long startid, Pageable p) {
-		Page<News> news = newsRepository.findByIdGreaterThan(startid, p);
-		return news;
+		Page<News> newsList = newsRepository.findByIdGreaterThan(startid, p);
+		return newsList;
 	}
+
+	@Override
+	public long getPageCount() {
+		return this.newsRepository.count();
+	}
+
 
 }

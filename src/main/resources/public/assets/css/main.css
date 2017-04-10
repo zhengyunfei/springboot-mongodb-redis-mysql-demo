@@ -1365,8 +1365,8 @@ span.red {
   background-color: #df8505;
 }
 .btn-danger {
-  color: #ffffff;
-  background-color: #bd362f;
+  color: white;
+  background-color: #f05050;
   z-index: 2;
 }
 .btn-danger:hover,

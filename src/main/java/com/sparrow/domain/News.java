@@ -1,5 +1,7 @@
 package com.sparrow.domain;
 
+import com.sparrow.domain.support.BaseEntity;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -12,7 +14,7 @@ import java.util.Date;
  */
 
 @Entity
-public class News {
+public class News extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,98 +1,183 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<title>header</title>
+	<title>header</title>
 </head>
 
 <body>
-	<div id="content" th:fragment="content">
-		<div class="container">
-			<!-- Breadcrumbs line -->
-			<div class="crumbs">
-				<ul id="breadcrumbs" class="breadcrumb">
-					<li><i class="icon-home"></i> <a href="/">仪表盘</a></li>
-					<li class="current">文章管理</li>
-				</ul>
+<div id="content" th:fragment="content">
+	<div class="container">
+		<!-- Breadcrumbs line -->
+		<div class="crumbs">
+			<ul id="breadcrumbs" class="breadcrumb">
+				<li><i class="icon-home"></i> <a href="/">仪表盘</a></li>
+				<li class="current">文章管理</li>
+			</ul>
 
+		</div>
+		<!-- /Breadcrumbs line -->
+
+		<!--=== Page Header ===-->
+		<div class="page-header">
+			<div class="page-title">
+				<span th:inline="text">欢迎使用，[[${#httpServletRequest.remoteUser}]]!</span>
 			</div>
-			<!-- /Breadcrumbs line -->
 
-			<!--=== Page Header ===-->
-			<div class="page-header">
-				<div class="page-title">
-					<span th:inline="text">欢迎使用，[[${#httpServletRequest.remoteUser}]]!</span>
-				</div>
+		</div>
+		<!-- /Page Header -->
 
-			</div>
-			<!-- /Page Header -->
+		<!--=== Page Content ===-->
 
-			<!--=== Page Content ===-->
-
-			<div class="row">
-				<div class="col-md-12">
-					<div class="widget box">
-						<div class="widget-header">
-							<h4>
-								<i class="icon-reorder"></i> 文章列表
-							</h4>
-							<div class="toolbar no-padding">
-								<div class="btn-group">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="widget box">
+					<div class="widget-header">
+						<h4>
+							<i class="icon-reorder"></i> 文章列表
+						</h4>
+						<div class="toolbar no-padding">
+							<div class="btn-group">
 									<span class="btn btn-xs "><a
-										th:href="@{/news/add}"><i class="icon-plus"></i></a>
+											th:href="@{/news/add}"><i class="icon-plus"></i></a>
 									</span>
-								</div>
 							</div>
 						</div>
-						<div class="content no-padding">
-							<table id="grid-data"
-								class="table table-condensed table-hover table-striped">
-								<thead>
-									<tr>
-										<th data-column-id="id" data-type="numeric"
-											data-identifier="true">文章ID</th>
-										<th data-column-id="title">文章标题</th>
-										<th data-column-id="img">图像</th>
-										<!--<th data-column-id="contents">摘要</th>-->
-										<th data-column-id="datetime">时间</th>
-										<th data-column-id="datetime">操作</th>
-										<th data-column-id="yulan">预览</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="news : ${newslist}">
-										<td th:text="${news.id}"></td>
-										<td th:text="${news.title}"></td>
-										<td th:text="${news.img}"></td>
-										<!--<td th:utext="${news.contents}"></td>-->
-										<td th:text="${news.datetime}"></td>
-										<td>
-											<a th:href="@{/news/edit(id=${news.id})}" title="编辑">
-												<i class="icon-edit"></i>
-											</a>
-										<!--</td>
-										<td>-->
-											<a th:href="@{/news/del(id=${news.id})}" title="删除">
-												<i class="icon-trash visual red"
-												onclick="return confirm('确定要删除吗?')"></i>
-											</a>
-										</td>
-										<td><a th:href="@{/news/detail(id=${news.id})}" target="_blank" title="预览">预览</a></td>
-									</tr>
-								</tbody>
-							</table>
+					</div>
+					<div class="content no-padding">
+						<div class="example-wrap">
+							<div class="example">
+								<table id="grid-data"></table>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
-			<!-- /.row -->
-			<!-- /Page Content -->
 		</div>
-		<!-- /.container -->
+		<!--jquery-->
+		<script src="/html/js/jquery.min.js"></script>
+		<!--bootstrap-->
+		<link href="/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet"/>
+		<!-- Bootstrap table -->
+		<script src="/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+		<script src="/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+		<script src="/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+		<!-- layer -->
+		<script src="/plugins/layer/layer.min.js"></script>
+		<!-- 自定义js -->
+		<script src="/plugins/content.js"></script>
+		<script src="/plugins/dateformat.js"></script>
+		<script>
+            $(document).ready(function () {
+                //初始化表格,动态从服务器加载数据
+                $("#grid-data").bootstrapTable({
+                    method: "POST",
+                    //必须设置，不然request.getParameter获取不到请求参数
+                    contentType: "application/x-www-form-urlencoded",
+                    url: "/news/pagejson",
+                    striped: true,
+                    //启动分页
+                    pagination: true,
+                    //每页显示的记录数
+                  /*  pageSize: 10,
+                    //当前第几页
+                    pageNumber: 1,*/
+                    //记录数可选列表
+                    pageList: [5, 10, 11,12,15,16,25,30,50,60,100,200,300],
+                    //是否启用查询
+                    search: true,
+                    //是否启用详细信息视图
+                    detailView: true,
+					 detailFormatter:detailFormatter,
+                    //表示服务端请求
+                    sidePagination: "server",
+                    //设置为undefined可以获取pageNumber，pageSize，searchText，sortName，sortOrder
+                    //设置为limit可以获取limit, offset, search, sort, order
+                    queryParamsType: "undefined",
+                    //json数据解析
+                    responseHandler: function (res) {
+                        return {
+                            "rows": res.rows,
+                            "total": res.total,
+							"pageSize":res.rowCount,
+							"pageNumber":res.current
+                        };
+                    },
+                    //数据列
+                    columns: [{
+                        title: "ID",
+                        field: "id",
+                        sortable: true
+                    }, {
+                        title: "文章标题",
+                        field: "title"
+                    }, {
+                        title: "图像",
+                        field: "img"
+                    }, {
+                        title: '时间',
+                        field: 'datetime',
+                        formatter:function (column,row,index) {
+                            return getSmpFormatDateByLong(row.datetime,false);
 
+                        }
+                    } ,
+                        {
+                            title: "操作",
+                            field: "empty",
+                            formatter: function (column, row, index) {
+                                return '<button type="button" onclick="edit(\''+row.id+'\')" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i>修改</button>&nbsp;'+
+                                    '<button onclick="del(\''+row.id+'\')" type="button" class="btn btn-danger btn-xs"><i class="fa fa-remove"  ></i>删除</button>';
+
+                            }
+
+
+                        },
+						{
+                        title: '预览',
+                        field: 'yulan',
+                        formatter: function (value, row, index) {
+                           return '<a href="/news/detail/'+row.id+'" target="_blank">' +
+							   '<span class="label label-primary">预览</span>' +
+							   '</a>';
+
+                        }
+                    }
+                    ]
+                });
+            })
+            function edit(id){
+                window.location.href='/news/edit/' + id;
+            }
+            function del(id){
+                layer.confirm('确定删除吗?', {icon: 3, title:'提示'}, function(index){
+                    $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        url: "news/delete/" + id,
+                        success: function(msg){
+                            layer.msg(msg.message, {time: 2000},function(){
+                                $('#grid-data').bootstrapTable("refresh");
+                                layer.close(index);
+                            });
+                        }
+                    });
+                });
+            }
+
+            function detailFormatter(index, row) {
+                var html = [];
+                html.push('<p><b>描述:</b> ' + row.contents + '</p>');
+                return html.join('');
+            }
+		</script>
+		<!-- /.row -->
+		<!-- /Page Content -->
 	</div>
+	<!-- /.container -->
+
+</div>
 
 </body>
 </html>

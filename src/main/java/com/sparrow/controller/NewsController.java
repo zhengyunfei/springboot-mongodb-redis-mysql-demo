@@ -1,10 +1,15 @@
 package com.sparrow.controller;
 
 import com.sparrow.domain.News;
+import com.sparrow.domain.Page;
 import com.sparrow.domain.User;
 import com.sparrow.repository.NewsRepository;
+import com.sparrow.service.NewsService;
 import com.sparrow.service.UserService;
+import com.sparrow.service.specification.SimpleSpecificationBuilder;
+import com.sparrow.service.specification.SpecificationOperator;
 import com.sparrow.utils.ServerResourcesUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -18,15 +23,17 @@ import java.util.regex.Pattern;
 
 @Controller
 @RequestMapping(value = "/news")
-public class NewsController {
+public class NewsController extends BaseController{
 
 	private NewsRepository newsRepository;
 	private UserService userService;
+	private NewsService newsService;
 
 	@Autowired
-	public NewsController(NewsRepository newsRepository, UserService userService) {
+	public NewsController(NewsRepository newsRepository, UserService userService,NewsService newsService) {
 		this.newsRepository = newsRepository;
 		this.userService = userService;
+		this.newsService = newsService;
 	}
 
 	/**
@@ -39,11 +46,34 @@ public class NewsController {
 	@GetMapping("/list")
 	public String adminNews(Model model,HttpServletRequest request) {
 		model.addAttribute("news", true);
-		Iterable<News> newslist = newsRepository.findAll();
-		model.addAttribute("newslist", newslist);
 		String domain=ServerResourcesUtil.getCurrentDomainUrl(request);
 		model.addAttribute("domain",domain);
 		return "admin/news";
+	}
+	/**
+	 * 新闻管理
+	 * @author:郑云飞
+	 * @createDate:2017-03-28
+	 * @return
+	 */
+	@PostMapping("/pagejson")
+	@ResponseBody
+	public Object pagejson(Page pageParam,HttpServletRequest request) {
+		/**fen ye start**/
+		SimpleSpecificationBuilder<News> builder = new SimpleSpecificationBuilder<News>();
+		String searchText = request.getParameter("searchText");
+		if(StringUtils.isNotBlank(searchText)){
+			builder.add("nickName", SpecificationOperator.Operator.likeAll.name(), searchText);
+		}
+		org.springframework.data.domain.Page<News> page = newsService.findAll(builder.generateSpecification(), getPageRequest(pageParam));
+		long total=newsService.getPageCount();
+		Page listPage=new Page();
+		listPage.setTotal(total);
+		listPage.setRows(page.getContent());
+		listPage.setCurrent(pageParam.getCurrent());
+		listPage.setRowCount(pageParam.getRowCount());
+
+		return listPage;
 	}
 
 	/**
@@ -70,8 +100,8 @@ public class NewsController {
 	 * @return
 	 */
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@GetMapping("/edit")
-	public String newsEdit(Model model, @RequestParam Long id) {
+	@RequestMapping(value = "/edit/{id}",method = RequestMethod.GET)
+	public String newsEdit(Model model, @PathVariable Long id) {
 		model.addAttribute("newsEdit", newsRepository.findOne(id));
 		return "admin/newsEdit";
 	}
@@ -102,8 +132,8 @@ public class NewsController {
 	 * @return
 	 */
 	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	@GetMapping("/del")
-	public String delNews(Model model, @RequestParam Long id) {
+	@GetMapping("/delete/{id}")
+	public String delNews(Model model, @PathVariable Long id) {
 		newsRepository.delete(id);
 		return "redirect:/admin/news";
 
@@ -118,8 +148,8 @@ public class NewsController {
 	 * @param id
 	 * @return
 	 */
-	@GetMapping("/detail")
-	public String detailNews(Model model, @RequestParam Long id) {
+	@GetMapping("/detail/{id}")
+	public String detailNews(Model model, @PathVariable Long id) {
 		News news=newsRepository.findOne(id);
 		String str = news.getContents();
 		//使用正则表达式检索出所有的<h2>...</h2>内容
@@ -153,17 +183,6 @@ public class NewsController {
 		s = s.replaceAll("&.{2,6}?;", "");
 		return s;
 	}
-	/**
-	 * 文章系列
-	 * @author:郑云飞
-	 * @createDate:2017-03-28
-	 * @param model
-	 * @return
-	 */
-	@GetMapping("/xilie")
-	public String xilie(Model model) {
-		return "html/xilie";
 
-	}
 
 }
