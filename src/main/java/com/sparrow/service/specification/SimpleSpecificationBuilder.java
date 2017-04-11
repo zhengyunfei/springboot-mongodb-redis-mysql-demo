@@ -1,6 +1,8 @@
 package com.sparrow.service.specification;
 
 import com.sparrow.service.specification.SpecificationOperator.Join;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.*;
 import org.springframework.data.jpa.domain.Specification;
 
 import java.util.ArrayList;
@@ -65,5 +67,36 @@ public class SimpleSpecificationBuilder<T> {
     public Specification<T> generateSpecification() {
         Specification<T> specification = new SimpleSpecification<T>(opers);
         return specification;
+    }
+
+    /**
+     * 调用的时候使用SimpleSortBuilder.generateSort("name","xh_d");表示先以name升序，之后以xh降序
+     */
+    public static Sort generateSort(String... fields) {
+        List<Order> orders = new ArrayList<Order>();
+        for(String f:fields) {
+            orders.add(generateOrder(f));
+        }
+        return new Sort(orders);
+    }
+
+    /**
+     * Encapsulation sort method
+     * @param f
+     * @return
+     */
+    private static Order generateOrder(String f) {
+        Order order = null;
+        String[] ff = f.split("_");
+        if(ff.length>=2) {
+            if(ff[1].equals("d")) {
+                order = new Order(Direction.DESC,ff[0]);
+            } else {
+                order = new Order(Direction.ASC,ff[0]);
+            }
+            return order;
+        }
+        order = new Order(f);
+        return order;
     }
 }

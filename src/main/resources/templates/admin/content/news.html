@@ -58,6 +58,7 @@
 		<!--jquery-->
 		<script src="/html/js/jquery.min.js"></script>
 		<!--bootstrap-->
+		<link href="/html/css/font-awesome.min.css" rel="stylesheet"/>
 		<link href="/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet"/>
 		<!-- Bootstrap table -->
 		<script src="/plugins/bootstrap-table/bootstrap-table.min.js"></script>
@@ -84,6 +85,10 @@
                     //当前第几页
                     pageNumber: 1,*/
                     //记录数可选列表
+                    showRefresh:true,
+                    showToggle:false,
+                    showColumns:true,
+					export:true,
                     pageList: [5, 10, 11,12,15,16,25,30,50,60,100,200,300],
                     //是否启用查询
                     search: true,
@@ -99,9 +104,7 @@
                     responseHandler: function (res) {
                         return {
                             "rows": res.rows,
-                            "total": res.total,
-							"pageSize":res.rowCount,
-							"pageNumber":res.current
+                            "total": res.total
                         };
                     },
                     //数据列
@@ -121,7 +124,8 @@
                         formatter:function (column,row,index) {
                             return getSmpFormatDateByLong(row.datetime,false);
 
-                        }
+                        },
+						sortable:true
                     } ,
                         {
                             title: "操作",
@@ -139,7 +143,7 @@
                         field: 'yulan',
                         formatter: function (value, row, index) {
                            return '<a href="/news/detail/'+row.id+'" target="_blank">' +
-							   '<span class="label label-primary">预览</span>' +
+							   '<i class=" icon-eye-open icon-white">预览</i>' +
 							   '</a>';
 
                         }

@@ -52,7 +52,7 @@ public class NewsController extends BaseController{
 	}
 	/**
 	 * 新闻管理
-	 * @author:郑云飞
+	 * @author:贤仁
 	 * @createDate:2017-03-28
 	 * @return
 	 */
@@ -63,8 +63,9 @@ public class NewsController extends BaseController{
 		SimpleSpecificationBuilder<News> builder = new SimpleSpecificationBuilder<News>();
 		String searchText = request.getParameter("searchText");
 		if(StringUtils.isNotBlank(searchText)){
-			builder.add("nickName", SpecificationOperator.Operator.likeAll.name(), searchText);
+			builder.add("title", SpecificationOperator.Operator.likeAll.name(), searchText);
 		}
+		builder.generateSort("datetime","xh_d");
 		org.springframework.data.domain.Page<News> page = newsService.findAll(builder.generateSpecification(), getPageRequest(pageParam));
 		long total=newsService.getPageCount();
 		Page listPage=new Page();

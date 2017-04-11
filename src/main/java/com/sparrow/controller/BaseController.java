@@ -73,7 +73,10 @@ public class BaseController {
     			}else{
     				sort = new Sort(Direction.ASC, sortName);
     			}
-    		}
+    		}else{
+    		    //默认排序
+                sort=new  Sort(Direction.DESC, "datetime");
+            }
     		String pageNumber=request.getParameter("pageNumber");
     		String pageSize=request.getParameter("pageSize");
     		if(StringUtils.isNoneBlank(pageNumber)){
