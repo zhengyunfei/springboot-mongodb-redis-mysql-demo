@@ -1,8 +1,10 @@
 package com.sparrow.controller;
 
+import com.sparrow.domain.Role;
 import com.sparrow.domain.User;
 import com.sparrow.domain.UserCreateForm;
 import com.sparrow.repository.UserRepository;
+import com.sparrow.service.RoleService;
 import com.sparrow.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -22,11 +25,13 @@ public class UserController {
 
 	private UserRepository userRepository;
 	private UserService userService;
+	private RoleService roleService;
 
 	@Autowired
-	public UserController(UserRepository userRepository, UserService userService) {
+	public UserController(UserRepository userRepository, UserService userService,RoleService roleService) {
 		this.userRepository = userRepository;
 		this.userService = userService;
+		this.roleService = roleService;
 	}
 	/**
 	 * 用户管理
@@ -52,6 +57,9 @@ public class UserController {
 	@GetMapping("/add")
 	public String userAdd(Model model) {
 		model.addAttribute("userAdd", new User());
+		//获取角色列表
+		List<Role> roleList=roleService.getList();
+		model.addAttribute("roleList",roleList);
 		return "admin/userAdd";
 	}
 
@@ -80,6 +88,9 @@ public class UserController {
 	@GetMapping("/edit")
 	public String userEdit(Model model, @RequestParam Long id) {
 		model.addAttribute("userEdit", userRepository.findOne(id));
+		//获取角色列表
+		List<Role> roleList=roleService.getList();
+		model.addAttribute("roleList",roleList);
 		return "admin/userEdit";
 	}
 

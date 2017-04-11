@@ -19,9 +19,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * 新闻接口实现
@@ -78,6 +76,15 @@ public class RoleServiceImpl implements RoleService {
 	public Object listAllRoles(Pageable p) {
 		Page<Role> roles = roleRepository.findAll(p);
 		return roles;
+	}
+	@Override
+	public List<Role> getList() {
+		List<Role> list=new ArrayList<>();
+		Collection<Role> roles = roleRepository.findAll();
+		for (Role role : roles) {
+			list.add(role);
+		}
+		return list;
 	}
 	/**
 	 * 获取当前登录用户名称

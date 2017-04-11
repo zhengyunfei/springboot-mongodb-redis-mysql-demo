@@ -1,11 +1,6 @@
 package com.sparrow.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
+import javax.persistence.*;
 
 /**
  * 用户User POJO定义
@@ -25,6 +20,9 @@ public class User {
 	private String password;
 	private String image;
 	private int enabled;
+	@ManyToMany(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
+	@JoinTable(name = "tb_user_role", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = { @JoinColumn(name = "role_id") })
+	private java.util.Set<Role> roles;
 
 	public void setId(Long id) {
 		this.id = id;
@@ -65,7 +63,13 @@ public class User {
 	public String getPassword() {
 		return password;
 	}
+	public java.util.Set<Role> getRoles() {
+		return roles;
+	}
 
+	public void setRoles(java.util.Set<Role> roles) {
+		this.roles = roles;
+	}
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", enabled=" + enabled + "]";

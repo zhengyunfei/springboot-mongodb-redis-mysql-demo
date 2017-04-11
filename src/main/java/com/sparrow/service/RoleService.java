@@ -5,6 +5,7 @@ import com.sparrow.domain.RoleCreateForm;
 import org.springframework.data.domain.Pageable;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * 角色接口
@@ -17,4 +18,5 @@ public interface RoleService {
 	Role getRoleByRolename(String roleName);
 	Object listAllRoles(Pageable p);
 	Object getRoleList(int current, int rowCount, String searchPhrase,HttpServletRequest request);
+	List<Role> getList();
 }

@@ -1,6 +1,7 @@
 package com.sparrow.service;
 
 import com.sparrow.domain.Authority;
+import com.sparrow.domain.Role;
 import com.sparrow.domain.User;
 import com.sparrow.domain.UserCreateForm;
 import com.sparrow.repository.AuthorityRepository;
@@ -26,7 +27,7 @@ import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Set;
 
 /**
  * 用户服务接口实现
@@ -201,14 +202,11 @@ public class UserServiceImpl implements UserService {
 				data.put("enabled", "<font color='red'>禁用</font>");
 			}
 
-			List<Authority> authorities = authorityRepository.findByUsername(user.getUsername());
+			/*List<Authority> authorities = authorityRepository.findByUsername(user.getUsername());*/
+			Set<Role> roleSet=user.getRoles();
 			ArrayList<String> arrayList = new ArrayList<String>();
-			for (Authority authority : authorities) {
-				if (authority.getAuthority().equals("ROLE_ADMIN")) {
-					arrayList.add("管理员");
-				} else if (authority.getAuthority().equals("ROLE_USER")) {
-					arrayList.add("用户");
-				}
+			for (Role role : roleSet) {
+				arrayList.add(role.getRolename());
 			}
 			data.put("role", arrayList.toString());
 			String domain= ServerResourcesUtil.getCurrentDomainUrl(request);
