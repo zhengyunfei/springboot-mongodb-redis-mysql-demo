@@ -66,7 +66,7 @@ public class NewsController extends BaseController{
 			builder.add("title", SpecificationOperator.Operator.likeAll.name(), searchText);
 		}
 		builder.generateSort("datetime","xh_d");
-		org.springframework.data.domain.Page<News> page = newsService.findAll(builder.generateSpecification(), getPageRequest(pageParam));
+		org.springframework.data.domain.Page<News> page = newsService.findAll(builder.generateSpecification(), getPageRequest());
 		long total=newsService.getPageCount();
 		Page listPage=new Page();
 		listPage.setTotal(total);

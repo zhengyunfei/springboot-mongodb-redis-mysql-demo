@@ -1,7 +1,6 @@
 package com.sparrow.controller;
 
 import com.sparrow.domain.Role;
-import com.sparrow.domain.User;
 import com.sparrow.repository.RoleRepository;
 import com.sparrow.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,8 +78,8 @@ public class RoleController {
 	@PostMapping("/edit")
 	public String newsSubmit(@ModelAttribute Role role) {
 		role.setCreatetime(new Date());
-		User user = userService.getCurrentUser();
-		role.setUser(user);
+		//User user = userService.getCurrentUser();
+		//role.setUsers(user);
 		roleRepository.save(role);
 		return "redirect:/role/list";
 	}

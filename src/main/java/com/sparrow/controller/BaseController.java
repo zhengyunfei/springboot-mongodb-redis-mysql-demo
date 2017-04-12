@@ -1,6 +1,5 @@
 package com.sparrow.controller;
 
-import com.sparrow.domain.Page;
 import com.sparrow.utils.DateEditor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,7 +59,7 @@ public class BaseController {
      * 获取分页请求
      * @return
      */
-    protected PageRequest getPageRequest(Page pageBo){
+    protected PageRequest getPageRequest(){
 		int page = 1;
 		int size = 10;
     	Sort sort = null;
@@ -73,10 +72,10 @@ public class BaseController {
     			}else{
     				sort = new Sort(Direction.ASC, sortName);
     			}
-    		}else{
+    		}/*else{
     		    //默认排序
                 sort=new  Sort(Direction.DESC, "datetime");
-            }
+            }*/
     		String pageNumber=request.getParameter("pageNumber");
     		String pageSize=request.getParameter("pageSize");
     		if(StringUtils.isNoneBlank(pageNumber)){

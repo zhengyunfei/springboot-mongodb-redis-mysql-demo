@@ -1,11 +1,14 @@
 package com.sparrow.service;
 
+import com.sparrow.dao.IRoleDao;
+import com.sparrow.dao.support.IBaseDao;
 import com.sparrow.domain.Role;
 import com.sparrow.domain.RoleCreateForm;
 import com.sparrow.domain.User;
 import com.sparrow.repository.AuthorityRepository;
 import com.sparrow.repository.RoleRepository;
 import com.sparrow.repository.UserRepository;
+import com.sparrow.service.support.impl.BaseServiceImpl;
 import com.sparrow.utils.ServerResourcesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,12 +31,14 @@ import java.util.*;
  *
  */
 @Service
-public class RoleServiceImpl implements RoleService {
+public class RoleServiceImpl extends BaseServiceImpl<Role, Integer> implements RoleService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(RoleServiceImpl.class);
 	private final RoleRepository roleRepository;
 	private final UserRepository userRepository;
 	private final AuthorityRepository authorityRepository;
+	@Autowired
+	private IRoleDao roleDao;
 	@Autowired
 	private Environment env;
 	/**
@@ -68,7 +73,7 @@ public class RoleServiceImpl implements RoleService {
 		role.setIsactive(form.getIsactive());
 		role.setRoleno(form.getRoleno());
 		User user = getCurrentUser();
-		role.setUser(user);
+		//role.setUser(user);
 		role.setCreatetime(new Date());
 		return roleRepository.save(role);
 	}
@@ -142,5 +147,10 @@ public class RoleServiceImpl implements RoleService {
 		ret.put("total", total);
 
 		return ret;
+	}
+
+	@Override
+	public IBaseDao<Role, Integer> getBaseDao() {
+		return this.roleDao;
 	}
 }

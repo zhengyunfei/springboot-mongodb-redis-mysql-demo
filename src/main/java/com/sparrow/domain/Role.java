@@ -1,7 +1,10 @@
 package com.sparrow.domain;
 
+import com.sparrow.domain.support.BaseEntity;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * 新闻POJO
@@ -12,7 +15,7 @@ import java.util.Date;
  */
 
 @Entity
-public class Role {
+public class Role extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,8 +26,19 @@ public class Role {
 	private Date createtime;
 	private int isactive;
 	private String roledesc;
-	@ManyToOne
-	private User user;
+
+
+	@ManyToMany(cascade = { CascadeType.REFRESH }, fetch = FetchType.LAZY)
+	@JoinTable(name = "tb_role_resource", joinColumns = { @JoinColumn(name = "role_id") }, inverseJoinColumns = { @JoinColumn(name = "resource_id") })
+	private java.util.Set<Resource> resources;
+
+	public Set<Resource> getResources() {
+		return resources;
+	}
+
+	public void setResources(Set<Resource> resources) {
+		this.resources = resources;
+	}
 
 	public Long getId() {
 		return id;
@@ -44,13 +58,7 @@ public class Role {
 		this.rolename = rolename;
 	}
 
-	public User getUser() {
-		return user;
-	}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	public String getRoleno() {
 		return roleno;
@@ -84,13 +92,12 @@ public class Role {
 		this.roledesc = roledesc;
 	}
 
-	public Role(String roleno, String rolename, Date createtime, int isactive, String roledesc, User user) {
+	public Role(String roleno, String rolename, Date createtime, int isactive, String roledesc) {
 		this.roleno = roleno;
 		this.rolename = rolename;
 		this.createtime = createtime;
 		this.isactive = isactive;
 		this.roledesc = roledesc;
-		this.user = user;
 	}
 
 	public Role() {

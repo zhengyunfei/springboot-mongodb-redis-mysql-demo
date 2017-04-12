@@ -1,5 +1,6 @@
 package com.sparrow.domain;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import com.sparrow.domain.support.BaseEntity;
 
 import javax.persistence.*;
@@ -23,6 +24,7 @@ public class News extends BaseEntity {
 	private String title;
 	private String img;
 	private String contents;
+	@JSONField(format = "yyyy-MM-dd")
 	private Date datetime;
 	@ManyToOne
 	private User user;

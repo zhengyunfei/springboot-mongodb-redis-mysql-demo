@@ -79,7 +79,7 @@ public class UserController {
 
 	/**
 	 * 用户修改表单
-	 * @author:郑云飞
+	 * @author：贤仁
 	 * @createDate:2017-03-28
 	 * @param model
 	 * @return
